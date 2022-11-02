@@ -1,0 +1,17 @@
+.card-container{
+    flex-wrap: wrap;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    width: 90%;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.card{
+    min-width: 250px;
+}
+
+.card-div{
+    width: fit-content;
+    margin: 5px;
+}

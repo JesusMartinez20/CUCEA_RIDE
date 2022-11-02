@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  //url:'http://192.168.1.98:80/CUCEA_Ride_BE'
+  url:'https://cucea-ride-be.com/CUCEA_Ride_BE'
 };
 
 /*

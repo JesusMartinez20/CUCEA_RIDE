@@ -1,0 +1,26 @@
+<div class="container">
+        <div *ngIf="coche; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+            <mat-card class="card">
+                <mat-card-title>Mi carro</mat-card-title>
+                <mat-card-content>
+                    <p>Modelo: {{cocheDatos.marca}} {{cocheDatos.modelo}}</p>
+                    <p>Placas: {{cocheDatos.placas}}</p>
+                    <p>Color: {{cocheDatos.color}}</p>
+                </mat-card-content>
+                <!-- <mat-card-actions>
+                    <button mat-button>Editar</button>
+                    <button mat-button color="warn">Eliminar</button>
+                </mat-card-actions> -->
+                </mat-card>
+        </ng-template>
+        <ng-template #elseBlock>
+            <div class="content">
+                <h2>No tienes un carro registrado</h2>
+                <button mat-raised-button color="primary" class="addButton" (click)="nav('registrar-carro')">
+                    Agregar carro
+                    <mat-icon aria-hidden="false" aria-label="Close icon">add</mat-icon>
+                </button>
+            </div>
+        </ng-template>
+</div>

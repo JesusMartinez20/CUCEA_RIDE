@@ -1,0 +1,57 @@
+<mat-tab-group  mat-align-tabs="center">
+    <mat-tab label="Rides desde CUCEA">
+        <div *ngIf="ridesFromCucea.length!=0; then cards else message"></div>
+        <ng-template #cards>
+          <div class="card-container">
+            <div *ngFor="let r of ridesFromCucea" class="card-div">
+                <mat-card class="card">
+                    <mat-card-title>{{r.lugar_salida}}</mat-card-title>
+                    <mat-card-subtitle>Hora de salida: {{r.hora_salida}}</mat-card-subtitle>
+                    <mat-card-content>
+                      <p>Espacios disponibles: {{r.espacios_disponibles}}</p>
+                      <p>Marca: {{r.marca}}</p>
+                      <p>Modelo: {{r.modelo}}</p>
+                    </mat-card-content>
+                    <mat-divider inset></mat-divider>
+                    <mat-card-actions>
+                      <button mat-button [routerLink] ="['/ride',r.id]">Ver más</button>
+                    </mat-card-actions>
+                  </mat-card>
+            </div>
+        </div>
+        </ng-template>
+        <ng-template #message>
+        <div class="card-container">
+          <p>No hay rides ofrecidos por el momento</p>
+        </div>
+        </ng-template>
+        
+    </mat-tab>
+    <mat-tab label="Rides hacia CUCEA"> 
+      <div *ngIf="ridesToCucea.length!=0;then cards2 else message2"></div>
+        <ng-template #cards2>
+          <div class="card-container">
+            <div *ngFor="let r of ridesToCucea" class="card-div">
+                <mat-card class="card">
+                    <mat-card-title>{{r.lugar_salida}}</mat-card-title>
+                    <mat-card-subtitle>Hora de salida: {{r.hora_salida}}</mat-card-subtitle>
+                    <mat-card-content>
+                      <p>Espacios disponibles: {{r.espacios_disponibles}}</p>
+                      <p>Marca: {{r.marca}}</p>
+                      <p>Modelo: {{r.modelo}}</p>
+                    </mat-card-content>
+                    <mat-divider inset></mat-divider>
+                    <mat-card-actions>
+                      <button mat-button [routerLink] ="['/ride',r.id]">Ver más</button>
+                    </mat-card-actions>
+                  </mat-card>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template #message2>
+          <div class="card-container">
+            <p>No hay rides ofrecidos por el momento</p>
+          </div>
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>

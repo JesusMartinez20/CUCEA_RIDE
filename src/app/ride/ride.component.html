@@ -1,0 +1,53 @@
+<div class="container">
+    <mat-card class="card">
+        <mat-card-title>Lugar de salida: {{ride.lugar_salida}}</mat-card-title>
+        <mat-card-subtitle>Hora de salida: {{ride.hora_salida}}</mat-card-subtitle>
+        <mat-card-content>
+            <p>Espacios disponibles: {{ride.espacios_disponibles}}</p>
+            <p>Modelo: {{ride.marca}} {{ride.modelo}}</p>
+            <p>Placas: {{ride.placas}}</p>
+            <p>Color: {{ride.color}}</p>
+            <mat-divider></mat-divider>
+            <p style="margin-top: 10%;">Paradas:</p>
+            <mat-list role="list">
+                <mat-list-item *ngFor="let p of paradas" role="listitem">• {{p.lugar}}</mat-list-item>
+            </mat-list>
+            <div *ngIf="conductor">
+                <mat-divider></mat-divider>
+                <p style="margin-top: 10%;">Solicitudes:</p>
+                <mat-list role="list">
+                    <mat-list-item *ngFor="let s of solicitudes" role="listitem">• {{s.nombre}} {{s.apellido}} - {{s.lugar}}</mat-list-item>
+                </mat-list>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="container" *ngIf="!loading; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock class="container">
+                <div *ngIf="!cancelar; then solicitarBtn else cancelarBtn"></div>
+                <ng-template #solicitarBtn>
+                    <div *ngIf="!conductor; then solicitarBtn2 else editarBtn"></div>
+                    <ng-template #solicitarBtn2>
+                        <div class="container">
+                            <button (click)="solicitarRide()" color="primary" mat-button>Solicitar ride</button>
+                        </div>
+                    </ng-template>
+                    <ng-template #editarBtn>
+                        <div class="container">
+                            <button (click)="editarRide()" color="primary" mat-button>Editar ride</button>
+                        </div>
+                    </ng-template>
+                </ng-template>
+                <ng-template #cancelarBtn>
+                    <div class="container">
+                        <button (click)="cancelarRide()" color="warn" mat-button>Cancelar ride</button>
+                    </div>
+                </ng-template>
+            </ng-template>
+            <ng-template  #elseBlock>
+                <div class="container">
+                    <mat-spinner diameter="50"></mat-spinner>
+                </div>
+            </ng-template>
+        </mat-card-actions>
+    </mat-card>
+</div>

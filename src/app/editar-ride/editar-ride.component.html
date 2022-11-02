@@ -1,0 +1,66 @@
+<div class="container">
+    <mat-card class="card">
+        <mat-card-title>Editar ride</mat-card-title>
+        <mat-card-subtitle>Ingrese la información del ride</mat-card-subtitle>
+        <mat-card-content>
+            <form [formGroup]="formGroup" (ngSubmit)="submit()" class="form">
+                <mat-form-field class="datepicker inputs">
+                    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Selecciona hora de salida"
+                    formControlName="hora_salida" 
+                    (dateChange)="dateUpdated()" >
+                    <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #picker [showSpinners]="true" [showSeconds]="false"
+                                            [stepHour]="1" [stepMinute]="1" [stepSecond]="1"
+                                            [touchUi]="true"
+                                            [disableMinute]="false" [hideTime]="false" 
+                                            [enableMeridian]="true" [defaultTime]="hora">
+                    </ngx-mat-datetime-picker>
+                </mat-form-field>
+                
+                <mat-radio-group formControlName="sentido" aria-label="Sentido" class="inputs radioGroup">
+                    <mat-radio-button [checked]="ride.sentido==0" [value]="0">De CUCEA</mat-radio-button>
+                    <mat-radio-button [checked]="ride.sentido==1" [value]="1">Hacia CUCEA</mat-radio-button>
+                </mat-radio-group>                  
+    
+                <mat-form-field appearance="fill" class="inputs"> 
+                    <mat-label>Espacios</mat-label>
+                    <input matInput formControlName="espacios" type="number">
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill" class="inputs"> 
+                    <mat-label>Lugar de salida</mat-label>
+                    <input matInput formControlName="lugar_salida">
+                </mat-form-field>
+
+                <mat-form-field class="example-chip-list inputs" appearance="fill">
+                    <mat-label>Paradas</mat-label>
+                    <mat-chip-list #chipList aria-label="Fruit selection">
+                      <mat-chip
+                        *ngFor="let fruit of fruits"
+                        (removed)="remove(fruit)">
+                        {{fruit}}
+                        <button matChipRemove>
+                          <mat-icon>cancel</mat-icon>
+                        </button>
+                      </mat-chip>
+                      <input
+                        placeholder="Agregar parada..."
+                        #fruitInput
+                        [formControl]="fruitCtrl"
+                        [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        (matChipInputTokenEnd)="add($event)">
+                    </mat-chip-list>
+                    
+                  </mat-form-field>
+                <mat-divider></mat-divider>
+                <div class="submit" style="margin-top: 15px;">
+                    <button class="submitBTN" mat-raised-button type="submit" color="primary">Editar ride</button>
+                </div>
+        </form>
+        <div class="submit" style="margin-top: 15px;">
+            <button class="submitBTN" mat-raised-button color="warn" (click)="eliminarRide()">Eliminar ride</button>
+        </div>
+        </mat-card-content>
+    </mat-card>
+</div>

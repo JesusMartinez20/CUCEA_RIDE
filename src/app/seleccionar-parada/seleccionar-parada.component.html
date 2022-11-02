@@ -1,0 +1,14 @@
+<form [formGroup]="formGroup" (ngSubmit)="submit()" class="form">
+    <label id="example-radio-group-label">Elige una parada</label>
+
+    <mat-radio-group
+    class="inputs radioGroup"
+    formControlName="parada">
+    <mat-radio-button class="radio-button" *ngFor="let p of paradas" [value]="p.id">
+        {{p.lugar}}
+    </mat-radio-button>
+    </mat-radio-group>
+    <div class="submit" style="margin-top: 15px;">
+        <button class="submitBTN" mat-button type="submit" color="primary">Elegir</button>
+    </div>
+</form>

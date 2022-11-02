@@ -1,0 +1,58 @@
+    <mat-tab-group  mat-align-tabs="center">
+        <mat-tab label="Rides solicitados">
+            <div class="card-container">
+                <div *ngIf="ridesSolicitados.length!=0; then cards else message"></div>
+                <ng-template #cards>
+                    <div *ngFor="let rs of ridesSolicitados" class="card-div">
+                        <mat-card class="card">
+                            <mat-card-title>{{rs.lugar_salida}}</mat-card-title>
+                            <mat-card-subtitle>Hora de salida: {{rs.hora_salida}}</mat-card-subtitle>
+                            <mat-card-content>
+                            <p>Espacios disponibles: {{rs.espacios_disponibles}}</p>
+                            <p>Marca: {{rs.marca}}</p>
+                            <p>Modelo: {{rs.modelo}}</p>
+                            </mat-card-content>
+                            <mat-divider inset></mat-divider>
+                            <mat-card-actions>
+                            <button mat-button [routerLink] ="['/ride',rs.id]">Ver más</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                </ng-template>
+                <ng-template #message>
+                    <p>No has solicitado un ride aun</p>
+                </ng-template>
+            </div>
+        </mat-tab>
+        <mat-tab label="Rides ofrecidos"> 
+            <div style="margin-top: 1%;">
+                <button (click)="ofrecer()" mat-fab class="fab" color="primary" aria-label="">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <div class="card-container">
+                    <div *ngIf="ridesOfrecidos.length!=0; then cards2 else message2"></div>
+                    <ng-template #cards2>
+                        <div *ngFor="let ro of ridesOfrecidos" class="card-div">
+                            <mat-card class="card">
+                                <mat-card-title>{{ro.lugar_salida}}</mat-card-title>
+                                <mat-card-subtitle>Hora de salida: {{ro.hora_salida}}</mat-card-subtitle>
+                                <mat-card-content>
+                                <p>Espacios disponibles: {{ro.espacios_disponibles}}</p>
+                                <p>Marca: {{ro.marca}}</p>
+                                <p>Modelo: {{ro.modelo}}</p>
+                                </mat-card-content>
+                                <mat-divider inset></mat-divider>
+                                <mat-card-actions>
+                                <button mat-button [routerLink] ="['/ride',ro.id]">Ver más</button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    </ng-template>
+                    <ng-template #message2>
+                        <p>No has ofrecido un ride aun</p>
+                    </ng-template>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+

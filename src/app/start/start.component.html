@@ -1,0 +1,22 @@
+<img src="../../assets/background.jpg"class="loginBackground">
+<div class="loginContainer"> 
+  <div class="loginContent">
+      <h1 style="color:#fff">CUCEA Ride</h1>
+      <div class="spacer"></div>
+      <form class="form" [formGroup]="formGroup" (ngSubmit)="submit()">
+          <mat-form-field class="inputs">
+              <mat-label style="color: #bbb;">Ingresa tu nombre de usuario</mat-label>
+              <input matInput formControlName="id">
+          </mat-form-field>
+      
+          <mat-form-field class="inputs">
+              <mat-label style="color: #bbb;">Ingresa tu contraseña</mat-label>
+              <input matInput type="password" formControlName="contrasena">
+          </mat-form-field>
+          <div class="submit">
+              <button class="submitBTN" mat-raised-button type="submit" color="primary">Iniciar sesión</button>
+          </div>
+      </form>
+  </div>
+</div>   
+

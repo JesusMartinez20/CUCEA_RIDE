@@ -1,0 +1,42 @@
+.container{
+    width: 100%;
+    margin-top: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addButton{
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.tab{
+    padding-top: 1%;
+}
+
+.card-container{
+    flex-wrap: wrap;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    width: 90%;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.card{
+    min-width: 250px;
+}
+
+.card-div{
+    width: fit-content;
+    margin: 5px;
+}
+
+.fab{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    z-index: 900;
+}

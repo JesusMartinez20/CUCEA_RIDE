@@ -1,0 +1,49 @@
+<img src="../../assets/background.jpg"class="loginBackground">
+<div class="loginContainer"> 
+  <div class="loginContent">
+        <h1 style="color:#fff">Registro</h1>
+        <div class="spacer"></div>
+        <form [formGroup]="formGroup" (ngSubmit)="submit()" class="form">
+                <mat-form-field appearance="fill" class="inputs"> 
+                    <mat-label>Matrícula</mat-label>
+                    <input matInput formControlName="matricula">
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" class="inputs">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput formControlName="contrasena" [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" class="inputs">
+                    <mat-label>Confirma la contraseña</mat-label>
+                    <input matInput formControlName="confirm_contrasena" [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> 
+                    </button>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" class="inputs"> 
+                    <mat-label>Nombre(s)</mat-label>
+                    <input matInput formControlName="nombre">
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" class="inputs"> 
+                    <mat-label>Apellidos</mat-label>
+                    <input matInput formControlName="apellido">
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" class="inputs"> 
+                    <mat-label>Correo</mat-label>
+                    <input matInput formControlName="correo">
+                  </mat-form-field>
+
+                  <div class="submit">
+                    <button class="submitBTN" mat-raised-button type="submit" color="primary">Registrarse</button>
+                </div>
+        </form>
+        
+  </div>
+</div>   
